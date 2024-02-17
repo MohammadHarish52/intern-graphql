@@ -12,11 +12,16 @@ export const typeDefs = /* GraphQL */ `
   type Mutation {
     addUser(user: AddUserInput!): User
     deleteUser(id: ID!): [User]
-    updateUser(id: ID!, update: AddUserInput!): User
+    updateUser(id: ID!, update: UpdateUserInput!): User
   }
   input AddUserInput {
     name: String!
     age: Int!
     email: String!
+  }
+  input UpdateUserInput {
+    name: String
+    age: Int
+    email: String
   }
 `;

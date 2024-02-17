@@ -34,7 +34,7 @@ const resolvers = {
     updateUser(_, args) {
       db.users = db.users.map((user) => {
         if (user.id === args.id) {
-          return { ...user, ...user.update };
+          return { ...user, ...args.update }; // Spread the update argument
         }
         return user;
       });
