@@ -56,3 +56,111 @@ The project includes a `db.js` file with dummy user data. You can modify this fi
 
 - `apollo-server`: Used for creating GraphQL server.
 - `@apollo/server-standalone`: Used for starting the Apollo server standalone.
+
+- ## Overview
+This API allows you to manage users in the playground environment. You can perform operations like retrieving all users, fetching specific user details, adding a new user, updating existing user information, and deleting a user.
+
+## Queries
+
+### Retrieve All Users
+To retrieve all users in the playground, use the following query:
+
+```graphql
+query allUser {
+  users {
+    id
+    name
+    age
+    email
+  }
+}
+```
+
+### Retrieve Specific User
+To retrieve details of a specific user, use the following query with variables:
+
+```graphql
+query specificUser($id: ID!) {
+  user(id: $id) {
+    name
+    age
+    email
+  }
+}
+```
+**Variables:**
+```json
+{
+  "id": "ID"
+}
+```
+
+## Mutations
+
+### Add User
+To add a new user, use the following mutation with variables:
+
+```graphql
+mutation addUser($user: AddUserInput!) {
+  addUser(user: $user) {
+    id
+    name
+    age
+    email
+  }
+}
+```
+**Variables Example:**
+```json
+{
+  "user": {
+    "name": "lion",
+    "age": 24,
+    "email": "1235@gmail.com"
+  }
+}
+```
+
+### Update User
+To update an existing user's information, use the following mutation with variables:
+
+```graphql
+mutation editUser($updateUserId: ID!, $update: AddUserInput!) {
+  updateUser(id: $updateUserId, update: $update) {
+    id
+    name
+    age
+  }
+}
+```
+**Variables Example:**
+```json
+{
+  "update": {
+    "name": "Harish",
+    "age": 30,
+    "email": "hiiii"
+  },
+  "updateUserId": "4"
+}
+```
+
+### Delete User
+To delete a user, use the following mutation with variables:
+
+```graphql
+mutation deleteUser($deleteUserId: ID!) {
+  deleteUser(id: $deleteUserId) {
+    id
+    name
+    age
+    email
+  }
+}
+```
+**Variables:**
+```json
+{
+  "deleteUserId": "1"
+}
+```
