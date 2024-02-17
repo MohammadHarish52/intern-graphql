@@ -125,23 +125,25 @@ mutation addUser($user: AddUserInput!) {
 To update an existing user's information, use the following mutation with variables:
 
 ```graphql
-mutation editUser($updateUserId: ID!, $update: AddUserInput!) {
+mutation EditUser( $updateUserId: ID!, $update: UpdateUserInput!){
   updateUser(id: $updateUserId, update: $update) {
-    id
     name
     age
+    id
+    email
+    
   }
 }
 ```
 **Variables Example:**
 ```json
-{
+{ 
   "update": {
-    "name": "Harish",
-    "age": 30,
-    "email": "hiiii"
+    "name": "don",
+    "age":30,
+    "email":"hiiii"
   },
-  "updateUserId": "4"
+  "updateUserId": "7", 
 }
 ```
 
